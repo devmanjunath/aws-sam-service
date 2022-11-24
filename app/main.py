@@ -16,7 +16,7 @@ logger = logging.getLogger(__name__)
 @app.get("/")
 def index():
     logger.warning("logging from the root logger")
-    return {"message": "Welcome"}
+    return {"message": "Welcome to logger"}
 
 
 handler = Mangum(app)
