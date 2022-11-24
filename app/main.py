@@ -5,7 +5,7 @@ from mangum import Mangum
 
 app = FastAPI()
 
-# fileConfig("logging.conf", disable_existing_loggers=False)
+fileConfig("logger.conf", disable_existing_loggers=False)
 
 logger = logging.getLogger(__name__)
 
