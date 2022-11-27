@@ -3,7 +3,7 @@ from logging.config import fileConfig
 from fastapi import FastAPI
 from mangum import Mangum
 from os import path
-
+import numpy
 
 app = FastAPI()
 
@@ -16,7 +16,8 @@ logger = logging.getLogger(__name__)
 @app.get("/")
 def index():
     logger.warning("logging from the root logger")
-    return {"message": "Welcome to logger"}
+    print(numpy)
+    return {"message": "hello"}
 
 
 handler = Mangum(app)
