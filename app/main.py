@@ -3,7 +3,7 @@ from logging.config import fileConfig
 from fastapi import FastAPI
 from mangum import Mangum
 from os import path
-import numpy
+from shared_files.cust_func import hello
 
 app = FastAPI()
 
@@ -16,8 +16,13 @@ logger = logging.getLogger(__name__)
 @app.get("/")
 def index():
     logger.warning("logging from the root logger")
-    print(numpy)
-    return {"message": "hello"}
+    return {"message": "Welcome to AWS SAM Project"}
+
+@app.get("/hello")
+def hello_root():
+    logger.warning("printing hello from layers")
+    res = hello()
+    return {"message": res}
 
 
 handler = Mangum(app)

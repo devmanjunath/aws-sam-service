@@ -25,4 +25,4 @@ archive.zip
 .*.sw?
 .aws-sam
 out.yml
-shared/python/packages/*
+shared
