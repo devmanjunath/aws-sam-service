@@ -1,5 +1,1 @@
-uvicorn
-fastapi
-mangum
-boto3
-numpy
+gitpython

@@ -26,3 +26,4 @@ archive.zip
 .aws-sam
 out.yml
 shared
+*.egg-info/
