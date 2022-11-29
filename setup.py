@@ -3,7 +3,7 @@ import git
 import os
 from pathlib import Path
 
-GIT_REPO_DIR=Path.joinpath(Path(__file__).parent.parent, "shared")
+GIT_REPO_DIR=Path.joinpath(Path(__file__).parent, "shared_services")
 requirements_file = Path.joinpath(GIT_REPO_DIR, "requirements.txt")
 
 required = []
@@ -27,12 +27,9 @@ class GitInit(Command):
             repo = git.Repo(GIT_REPO_DIR)
             current_remote = repo.remotes.origin
             current_remote.pull()
-            print(required)
-
-            print([ item.a_path for item in repo.index.diff(None) ])
         except Exception:
             print("Shared folder does not exist")
-            git.Repo.clone_from("https://github.com/devmanjunath/aws-sam-layer.git", to_path=GIT_REPO_DIR, branch="main")
+            git.Repo.clone_from("https://github.com/devmanjunath/aws-sam-layer.git", to_path=GIT_REPO_DIR, branch="staging")
     
     def pre_install(self):
         pass
