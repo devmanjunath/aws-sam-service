@@ -4,6 +4,8 @@ from shared_services.database import database
 from hierarchy_services.api.v1.services import config_service
 from shared_services.schema.documents import Dispatch, Experiment, Project, Summary
 from beanie import init_beanie
+from mangum import Mangum
+
 app = FastAPI()
 
 @app.on_event("startup")
@@ -16,3 +18,5 @@ async def startup_event():
     )
 
 app.include_router(router, prefix="/api/v1")
+
+handler = Mangum(app)

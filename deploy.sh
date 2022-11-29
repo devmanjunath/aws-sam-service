@@ -2,9 +2,9 @@
 mkdir -p shared/python
 
 ### Install libraries from requirements.txt into shared/python
-pip install -r requirements.txt -t shared/python
+pip install -r shared_services/requirements.txt -t shared/python
 
-cp -r shared_files shared/python/
+cp -r shared_services shared/python/
 
 sam validate
 
@@ -17,7 +17,7 @@ sam package \
 
 sam deploy \
   --template-file out.yml \
-  --stack-name b2c \
+  --stack-name covalent-b2c \
   --region ap-south-1 \
   --no-fail-on-empty-changeset \
   --capabilities CAPABILITY_IAM

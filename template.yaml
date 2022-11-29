@@ -6,11 +6,12 @@ Resources:
   AppFunction:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: app
-      Handler: main.handler
+      FunctionName: hierarchy_services
+      CodeUri: ./hierarchy_services
+      Handler: hierarchy_services.main.handler
       Runtime: python3.9
       Layers:
-        - !Ref TempConversionDepLayer
+        - !Ref SharedLayer
       Events:
         Root:
           Type: Api
@@ -22,11 +23,11 @@ Resources:
           Properties:
             Path: /{proxy+}
             Method: ANY
-  TempConversionDepLayer:
+  SharedLayer:
     Type: AWS::Serverless::LayerVersion
     Properties:
-      LayerName: sam-app-dependencies
-      Description: Dependencies for sam app [temp-units-conv]
+      LayerName: SharedLayer
+      Description: Dependencies for sam app
       ContentUri: shared/
       CompatibleRuntimes:
         - python3.9
